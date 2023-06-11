@@ -1,0 +1,24 @@
+.nav{
+    border: 1px solid #808080a3;
+    padding: 12px;
+}
+
+.chat-card {
+    max-height: 300px;
+    overflow-y: scroll;
+    height: 300px!important;
+}
+
+.sender-message {
+    background-color: #DCF8C6;
+}
+
+.receiver-message {
+    background-color: #E2E2E2;
+}
+
+.message {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+}

@@ -1,0 +1,22 @@
+<div class="nav">
+    <div class="nav-title">
+      <h1>BLOGT</h1>
+      <%= current_user.nickname %>
+      <%= link_to "Sair", users_destroy_session_path, data:{turbo_method: :delete}%>
+
+    </div>
+</div>
+<br>
+
+<div class="card chat-card">
+    <div class="card-body">
+        <%= turbo_stream_from "messages" %>
+         <div id="messages">
+            <%= render @messages %>
+         </div>
+    </div>
+</div>
+
+<br>
+
+<%= render "messages/shared/form" %>
