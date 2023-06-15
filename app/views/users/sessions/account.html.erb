@@ -1,0 +1,64 @@
+<header class="text-center mt-4">
+    <h1 class="display-4">Perfil</h1>
+</header>
+
+<!-- Perfil do usuário -->
+<section class="row mt-4">
+    <div class="col-md-4">
+    <!-- Foto de perfil -->
+    <img src="https://via.placeholder.com/150" alt="Foto de perfil" class="rounded-circle img-fluid">
+    </div>
+    <div class="col-md-8">
+    <!-- Informações do usuário -->
+    <h2 class="h4"><%= @user.nickname %></h2>
+    <p><%= @user.bio %></p>
+    <p>Entrou em <%= @user.created_at.strftime("%d/%m/%Y") %></p>
+    <ul class="list-unstyled">
+        <li><%= cash_formated %></li>
+
+        <% if @user === current_user && @user.password.nil? %>
+            <div style="border: 2px solid grey;padding: 5px;margin-top: 16px;border-radius: 5px;">
+                <li>Percebemos que você ainda não protegeu sua conta!</li>
+                <li>Clique <a href="" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Aqui</a> para criar uma senha para sua conta!</li>
+
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Criar senha</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                            <div class="modal-body">
+                                <%= render "new_password" %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        <% end %>
+    </ul>
+    </div>
+</section>
+
+<%
+=begin%>
+ <section class="mt-4">
+    <h2 class="h4">Tweets</h2>
+    <div class="card mb-3">
+    <div class="card-body">
+        <p class="card-text">Conteúdo do tweet</p>
+    </div>
+    <div class="card-footer text-muted">
+        <% @cash_history.each do |history| %>
+            <% if history.nickname === current_user.nickname %>
+                <%= history.cash %> | <%= history.updated_at %>
+            <% end %>
+        <% end %>
+
+    </div>
+    </div>
+    <!-- Adicionar mais tweets aqui -->
+</section>
+<%
+=end%>

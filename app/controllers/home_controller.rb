@@ -2,7 +2,5 @@
 class HomeController < ApplicationController
   before_action :user_auth!
 
-  def index
-    @messages = Message.all
-  end
+  def index; end
 end

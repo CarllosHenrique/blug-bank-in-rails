@@ -1,0 +1,13 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h1 class="card-title text-center"><%= @user.nickname %> senha</h1>
+      <%= form_with(model: @user, method: :post, url: users_sessions_confirmation_path, class: "my-3") do |form| %>
+        <%= form.label :password, class: "form-label" %>
+        <%= form.password_field :password, class: "form-control" %>
+
+        <%= form.submit 'Confirmar', class: "btn btn-primary mt-3" %>
+      <% end %>
+    </div>
+  </div>
+</div>

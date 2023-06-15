@@ -1,22 +1,18 @@
-<div class="nav">
-    <div class="nav-title">
-      <h1>BLOGT</h1>
-      <%= current_user.nickname %>
-      <%= link_to "Sair", users_destroy_session_path, data:{turbo_method: :delete}%>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page"><%= cash_formated %></li>
+  </ol>
+</nav>
 
-    </div>
+<% if current_user.cash.nil? || current_user.id == 1 %>
+<div class="card text-center">
+  <div class="card-header">
+    Primeiro Salario!
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Special Money</h5>
+    <p class="card-text">Você mamou o chefe ganhe $1000</p>
+    <%= button_to "Obtenha salário", users_salary_update_path, method: :put, class: "btn btn-primary" %>
+  </div>
 </div>
-<br>
-
-<div class="card chat-card">
-    <div class="card-body">
-        <%= turbo_stream_from "messages" %>
-         <div id="messages">
-            <%= render @messages %>
-         </div>
-    </div>
-</div>
-
-<br>
-
-<%= render "messages/shared/form" %>
+<% end %>

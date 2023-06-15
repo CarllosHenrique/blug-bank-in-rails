@@ -1,4 +1,0 @@
-<%= form_with(model: current_user.messages.build, url: messages_path, remote: true, class:"d-flex") do |form| %>
-    <%= form.text_field :content, class: "form-control me-2", placeholder:"Search" %>
-    <%= form.submit "Enviar",data: {disable_with: false},  class:"btn btn-outline-success", data: { turbo_frame: "_top" }%>
-<% end %>

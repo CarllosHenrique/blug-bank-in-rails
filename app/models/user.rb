@@ -1,5 +1,5 @@
 class User < ApplicationRecord
   validates :nickname, presence: true, uniqueness: true
-
-  has_many :messages, dependent: :destroy
+  extend FriendlyId
+  friendly_id :nickname, use: :slugged
 end
