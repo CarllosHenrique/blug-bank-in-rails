@@ -29,7 +29,6 @@ gem "jbuilder"
 
 gem 'friendly_id'
 
-
 gem 'hotwire-rails'
 
 # Use Redis adapter to run Action Cable in production
@@ -76,4 +75,4 @@ group :test do
   gem "webdrivers"
 end
 
-gem "dockerfile-rails", ">= 1.4", :group => :development
+gem "dockerfile-rails", ">= 1.4", group: :development

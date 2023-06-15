@@ -47,9 +47,7 @@ Metrics/PerceivedComplexity:
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: nested, compact
 Style/ClassAndModuleChildren:
-  Exclude:
-    - 'test/channels/application_cable/connection_test.rb'
-    - 'test/test_helper.rb'
+  Enabled: false
 
 # Offense count: 4
 # Configuration parameters: AllowedConstants.
@@ -125,3 +123,5 @@ Layout/LineLength:
   Max: 198
 AllCops:
     SuggestExtensions: false
+
+

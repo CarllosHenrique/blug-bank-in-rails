@@ -7,10 +7,10 @@ class Users::MoneysController < ApplicationController
 
     if current_user.update(cash: salario)
       flash[:success] = "Você recebeu seu salário"
-      redirect_to root_path
     else
       flash[:error] = "Chefe mão de vaca"
-      redirect_to root_path
     end
+
+    redirect_to root_path
   end
 end
