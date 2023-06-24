@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+10.times do |stock|
+  Stock.create(name: "BLGT#{stock}", value: stock * 4.5, quantity: stock + 2, user_id: 1)
+end

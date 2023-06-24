@@ -1,7 +1,7 @@
 class Users::SessionsController < ApplicationController
   before_action :user_signed_in?, only: [:sign_in]
   before_action :user_auth!, only: [:account]
-  before_action :find_user, only: [:new_password, :account]
+  before_action :find_user, only: [:new_password, :account, :edit_account]
   before_action :find_confirmation_user, only: [:confirmation, :password_confirmation]
 
   def sign_in
@@ -15,6 +15,7 @@ class Users::SessionsController < ApplicationController
       handle_existing_user
     else
       handle_new_user_creation
+      user_online
     end
   end
 
@@ -34,12 +35,25 @@ class Users::SessionsController < ApplicationController
   def password_confirmation
     if @user.password == user_params[:password]
       login_user(@user)
+      user_online
     else
       handle_invalid_password
     end
   end
 
   def account; end
+
+  def edit_account
+    return unless @user.update(user_params)
+
+    flash[:success] = "Vc editou as informações da sua conta!"
+    redirect_to users_account_path(@user)
+  end
+
+  def clear_session
+    logout_user
+    head :no_content
+  end
 
   def destroy
     logout_user
@@ -48,7 +62,7 @@ class Users::SessionsController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:nickname, :password, :bio)
+    params.require(:user).permit(:nickname, :email, :password, :bio)
   end
 
   def find_user
@@ -65,6 +79,7 @@ class Users::SessionsController < ApplicationController
       session['confirmation'] = @user.id
     else
       login_user(@user)
+      user_online
     end
   end
 
@@ -74,6 +89,14 @@ class Users::SessionsController < ApplicationController
 
     @user = User.create(nickname: user_params[:nickname])
     login_user(@user)
+  end
+
+  def user_online
+    current_user.set_online(true)
+  end
+
+  def user_offline
+    current_user.set_online(false)
   end
 
   def handle_password_update_error
@@ -92,6 +115,7 @@ class Users::SessionsController < ApplicationController
   end
 
   def logout_user
+    user_offline
     session[:user_id] = nil
     redirect_to users_new_sessions_path
   end

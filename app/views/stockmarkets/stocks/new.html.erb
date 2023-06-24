@@ -1,0 +1,21 @@
+<%= form_with(model: @stock, url: stockmarkets_stocks_path, id: "stock-form") do |form| %>
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control", id: "stock-name" %>
+    <span class="error-message" id="stock-name-error"></span>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :value, class: "form-label" %>
+    <%= form.number_field :value, class: "form-control", step: "0.01", id: "stock-value" %>
+    <span class="error-message" id="stock-value-error"></span>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :quantity, class: "form-label" %>
+    <%= form.number_field :quantity, class: "form-control", id: "stock-quantity" %>
+    <span class="error-message" id="stock-quantity-error"></span>
+  </div>
+
+  <%= form.submit "Create", class: "btn btn-primary", id: "stock-submit" %>
+<% end %>

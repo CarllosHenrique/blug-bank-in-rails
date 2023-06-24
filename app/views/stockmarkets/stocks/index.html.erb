@@ -1,0 +1,22 @@
+<div id="stocks" class="row">
+  <% @stocks.each do |stock| %>
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= stock.name %></h5>
+          <p class="card-text">Valor: $<%= stock.value %></p>
+          <p class="card-text">Quantidade: <%= stock.quantity %></p>
+
+          <% if stock.user != current_user %>
+            <div class="d-grid gap-2">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= stock.name %>">
+                  Comprar
+              </button>
+                  <%= render "stockmarkets/stocks/shared/stocks_modal", stock: stock %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

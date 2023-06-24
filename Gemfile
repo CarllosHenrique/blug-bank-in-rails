@@ -76,3 +76,5 @@ group :test do
 end
 
 gem "dockerfile-rails", ">= 1.4", group: :development
+
+gem "whenever", "~> 1.0"

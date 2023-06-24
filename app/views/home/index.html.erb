@@ -4,15 +4,5 @@
   </ol>
 </nav>
 
-<% if current_user.cash.nil? || current_user.id == 1 %>
-<div class="card text-center">
-  <div class="card-header">
-    Primeiro Salario!
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Special Money</h5>
-    <p class="card-text">Você mamou o chefe ganhe $1000</p>
-    <%= button_to "Obtenha salário", users_salary_update_path, method: :put, class: "btn btn-primary" %>
-  </div>
-</div>
-<% end %>
+<%= render partial: "home/shared/salary" %>
+

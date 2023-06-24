@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for blugt on 2023-06-15T18:54:29-03:00
+# fly.toml app configuration file generated for blught on 2023-06-17T18:12:54-03:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "blugt"
+app = "blught"
 primary_region = "gru"
 console_command = "/rails/bin/rails console"
 

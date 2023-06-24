@@ -1,0 +1,16 @@
+<div class="modal fade" id="staticBackdrop<%= stock.name %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Comprar <%= stock.name %></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="card-text">VALOR ATUAL: <%= stock.value %></p>
+        <p class="card-text">QUANTIDADE: <%= stock.quantity %></p>
+        <p class="card-text">DONO: <%= stock.user.nickname %></p>
+      </div>
+        <%= button_to "Comprar", stockmarkets_stock_buy_path(stock), style:"margin: 17px;", class:"btn btn-primary", method: :put%>
+    </div>
+  </div>
+</div>

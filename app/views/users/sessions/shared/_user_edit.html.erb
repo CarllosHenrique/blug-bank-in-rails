@@ -1,0 +1,34 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Editar <strong><%= current_user.nickname %></strong></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-4">
+                    <img src="https://via.placeholder.com/150" alt="Foto de perfil" class="rounded-circle img-fluid">
+                </div>
+                <br>
+                <%= form_with(model: current_user, method: :patch, url: users_account_edit_path) do |f| %>
+                <div class="mb-3">
+                    <%= f.text_field :nickname, class: "form-control", placeholder: "Seu nick" %>
+                    <br>
+                    <%= f.email_field :email, class: "form-control", placeholder: "Colocar Email" %>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Mostrar no perfil?</label>
+                    </div>
+                    <br>
+                    <%= f.text_area :bio, class: "form-control", placeholder: "Crie sua Bio" %>
+                </div>
+
+
+            </div>
+                <div class="modal-footer">
+                    <%= f.submit "Editar #{current_user.nickname}", class: "btn btn-primary" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
